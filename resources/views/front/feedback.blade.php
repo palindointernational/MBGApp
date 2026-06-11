@@ -5,7 +5,7 @@
         </h1>
     </div>
     {{-- feedback --}}
-    @if ($beneficiaries->reviews->isNotEmpty())
+    @if (optional($beneficiaries)->reviews?->isNotEmpty())
         <section id="feedback" class=" p-4">
             {{-- feedback 1 --}}
             @foreach ($beneficiaries->reviews as $feedbacks)

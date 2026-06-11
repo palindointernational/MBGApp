@@ -23,7 +23,7 @@ class RecepientController extends Controller
     public function create()
     {
         $title = "Tambah Instansi Penerima";
-        $kitchens = Kitchen::all();
+        $kitchens = Kitchen::where('user_id', Auth::id())->first();
         return view('dashboard.components.receipent.create', compact('title', 'kitchens'));
     }
 

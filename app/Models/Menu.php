@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
+use Carbon\Carbon;
 
 class Menu extends Model
 {
@@ -16,7 +17,8 @@ class Menu extends Model
         'date',
         'portion',
         'status',
-        'receiver_id'
+        'receiver_id',
+        'distributed_at',
     ];
     protected static function boot()
     {
@@ -48,6 +50,32 @@ class Menu extends Model
 
         return $slug;
     }
+
+    // public function getStatusAttribute()
+    // {
+    //     if ($this->distributed_at) {
+    //         return 'Distributed';
+    //     }
+    //     $time = now()->format('H:i');
+
+    //     if ($time >= '21:30' || $time <= '00:59') {
+    //         return 'Draft';
+    //     }
+
+    //     if ($time >= '01:00' && $time < '04:30') {
+    //         return 'Cooking';
+    //     }
+
+    //     if ($time >= '04:30' && $time < '06:00') {
+    //         return 'Packing';
+    //     }
+
+    //     if ($time >= '06:00' && $time <= '08:00') {
+    //         return 'Delivered';
+    //     }
+
+    //     return 'Draft';
+    // }
 
     public function receiver()
     {

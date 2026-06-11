@@ -30,7 +30,7 @@
                             <form action="{{ route('recipientStore') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="name">Nama <code>*</code></label>
                                             <input type="text" class="form-control" id="name" name="name"
@@ -38,17 +38,11 @@
                                             <span class="text-danger">{{ $errors->first('name') }}</span>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="kitchen_id">Pilih Dapur <code>*</code></label>
-                                            <select class="form-control" id="kitchen_id" name="kitchen_id" required>
-                                                <option value="" selected disabled>Pilih Dapur</option>
-                                                @foreach ($kitchens as $kitchen)
-                                                    <option value="{{ $kitchen->id }}">{{ $kitchen->name }}</option>
-                                                @endforeach
-                                            </select>
-                                            <span class="text-danger">{{ $errors->first('kitchen_id') }}</span>
-                                        </div>
+                                    <div class="form-group">
+                                        <input type="hidden" class="form-control" id="kitchen_id" name="kitchen_id"
+                                            placeholder="Masukkan nama lengkap" autofocus required
+                                            value="{{ $kitchens->id }}">
+                                        <span class="text-danger">{{ $errors->first('kitchen_id') }}</span>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">

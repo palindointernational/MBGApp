@@ -50,12 +50,18 @@
                         </div>
                     </div>
                     <div class="input-group mb-3">
-                        <input type="password" class="form-control" name="password" required
+                        <input type="password" id="password" class="form-control" name="password" required
                             autocomplete="current-password" placeholder="Password">
                         <div class="input-group-append">
-                            <div class="input-group-text">
+                            <span class="input-group-text" id="togglePassword" style="cursor: pointer;">
+                                <i class="fas fa-eye" id="eyeIcon"></i>
+                            </span>
+                        </div>
+
+                        <div class="input-group-append">
+                            <span class="input-group-text">
                                 <span class="fas fa-lock"></span>
-                            </div>
+                            </span>
                         </div>
                     </div>
                     <div class="row">
@@ -86,6 +92,22 @@
     <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- AdminLTE App -->
     <script src="../../dist/js/adminlte.min.js"></script>
+    <script>
+        document.getElementById('togglePassword').addEventListener('click', function() {
+            const password = document.getElementById('password');
+            const eyeIcon = document.getElementById('eyeIcon');
+
+            if (password.type === 'password') {
+                password.type = 'text';
+                eyeIcon.classList.remove('fa-eye');
+                eyeIcon.classList.add('fa-eye-slash');
+            } else {
+                password.type = 'password';
+                eyeIcon.classList.remove('fa-eye-slash');
+                eyeIcon.classList.add('fa-eye');
+            }
+        });
+    </script>
 </body>
 
 </html>

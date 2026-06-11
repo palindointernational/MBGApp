@@ -38,7 +38,7 @@
                                     <tr>
                                         <th>#</th>
                                         <th>Nama</th>
-                                        <th>Dapur</th>
+                                        {{-- <th>Dapur</th> --}}
                                         <th>Telp</th>
                                         <th>Tipe</th>
                                         <th>Total Porsi</th>
@@ -51,7 +51,7 @@
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $recipient->name }}</td>
-                                            <td>{{ $recipient->kitchen->name ?? 'N/A' }}</td>
+                                            {{-- <td>{{ $recipient->kitchen->name ?? 'N/A' }}</td> --}}
                                             <td>{{ $recipient->phone ?? 'N/A' }}</td>
                                             <td>{{ $recipient->type ?? 'N/A' }}</td>
                                             <td>{{ $recipient->portion ?? 'N/A' }}</td>
