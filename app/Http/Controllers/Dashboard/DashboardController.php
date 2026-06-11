@@ -15,6 +15,7 @@ class DashboardController extends Controller
     public function index()
     {
         $title = "Dashboard";
+        $benCount = 0;
         $menuCount = Menu::whereHas('kitchen', function ($query) {
             $query->where('user_id', Auth::id());
         })->count();
@@ -22,10 +23,11 @@ class DashboardController extends Controller
             $query->where('user_id', Auth::id());
         })->count();
         $kitchen = Kitchen::where('user_id', Auth::id())->first();
-
-        $benCount = Beneficiary::whereHas('receiver', function ($q) use ($kitchen) {
-            $q->where('kitchen_id', $kitchen->id);
-        })->count();
+        if ($kitchen) {
+            $benCount = Beneficiary::whereHas('receiver', function ($q) use ($kitchen) {
+                $q->where('kitchen_id', $kitchen->id);
+            })->count();
+        }
         return view('dashboard.index', compact('title', 'menuCount', 'kitchenCount', 'benCount'));
     }
 }

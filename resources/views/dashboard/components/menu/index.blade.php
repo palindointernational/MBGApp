@@ -83,11 +83,7 @@
                                             </td>
                                             <td>
                                                 <div class="btn-group btn-block">
-                                                    @if (
-                                                        $menu->status == 'Draft' ||
-                                                            $menu->status == 'Cooking' ||
-                                                            $menu->status == 'Packing' ||
-                                                            $menu->status == 'Delivered')
+                                                    @if ($menu->status == 'Draft' || $menu->status == 'Cooking' || $menu->status == 'Packing')
                                                         <button type="button" class="btn btn-sm btn-info"
                                                             data-toggle="modal"
                                                             data-target="#modal-default{{ $menu->id }}">
@@ -125,9 +121,6 @@
                                                                                 <option value="Delivered"
                                                                                     {{ $menu->status == 'Delivered' ? 'selected' : '' }}>
                                                                                     Delivered</option>
-                                                                                <option value="Distributed"
-                                                                                    {{ $menu->status == 'Distributed' ? 'selected' : '' }}>
-                                                                                    Distributed</option>
                                                                             </select>
                                                                         </div>
                                                                     </div>
