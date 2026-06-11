@@ -16,9 +16,13 @@ class FeedbackController extends Controller
         $title = "Penilaian";
         $k = Kitchen::where('user_id', Auth::id())->first();
         $m = Menu::where('kitchen_id', $k->id)->first();
-        $data = Review::where('menu_id', $m->id)->orderBy('created_at', 'desc')
-            ->get()
-            ->unique('menu_id');
+        if (!$m) {
+            $data = collect();
+        } else {
+            $data = Review::where('menu_id', $m->id)->orderBy('created_at', 'desc')
+                ->get()
+                ->unique('menu_id');
+        }
         return view('dashboard.components.feedback.index', compact('title', 'data'));
     }
 

@@ -15,7 +15,11 @@ class MenuLogsController extends Controller
         $menu = Menu::whereHas('kitchen', function ($query) {
             $query->where('user_id', Auth::id());
         })->latest()->first();
-        $data = MenuStatusLog::where('menu_id', $menu->id)->latest()->get();
+        if (!$menu) {
+            $data = collect();
+        } else {
+            $data = MenuStatusLog::where('menu_id', $menu->id)->latest()->get();
+        }
         return view('dashboard.components.menulogs.index', [
             'title' => 'Menu Logs',
             'data' => $data
